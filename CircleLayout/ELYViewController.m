@@ -7,23 +7,83 @@
 //
 
 #import "ELYViewController.h"
+#import "ELYCollectionViewCircleLayout.h"
+#import "ELYCollectionViewCell.h"
 
 @interface ELYViewController ()
 
+@property (nonatomic, assign) NSUInteger cellCount;
+
 @end
+
+NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseIdentifier";
 
 @implementation ELYViewController
 
-- (void)viewDidLoad
-{
+#pragma mark - View Lifycycle
+
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    [self setCellCount:20];
+    
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    [[self collectionView] addGestureRecognizer:tgr];
+    
+    [[self collectionView] registerClass:[ELYCollectionViewCell class] forCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier];
+    [[self collectionView] setCollectionViewLayout:[ELYCollectionViewCircleLayout collectionViewCircleLayout]];
+    
+    [[self collectionView] reloadData];
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+}
+
+#pragma mark - UICollectionView Data Source
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self cellCount];
+
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ELYCollectionViewCell *cell = [[self collectionView] dequeueReusableCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+    return cell;
+
+}
+
+#pragma mark - UICollectionView Delegate
+
+#pragma mark - Gesture Handlers
+
+- (void)handleTapGesture:(UITapGestureRecognizer*)sender {
+    
+    if ([sender state] == UIGestureRecognizerStateEnded) {
+        CGPoint initialTapPoint = [sender locationInView:[self collectionView]];
+        NSIndexPath *tappedCellIndexPath = [[self collectionView] indexPathForItemAtPoint:initialTapPoint];
+        
+        if (tappedCellIndexPath != nil) {
+        
+            [self setCellCount:[self cellCount] - 1];
+            [[self collectionView] performBatchUpdates:^{
+                [[self collectionView] deleteItemsAtIndexPaths:@[tappedCellIndexPath]];
+            } completion:nil];
+        
+        } else {
+        
+            [self setCellCount:[self cellCount] + 1];
+            [[self collectionView] performBatchUpdates:^{
+                [[self collectionView] insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]];
+            } completion:nil];
+        
+        }
+        
+    }
+    
 }
 
 @end

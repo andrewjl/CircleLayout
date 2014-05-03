@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELYViewController : UIViewController
+@interface ELYViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
 @end

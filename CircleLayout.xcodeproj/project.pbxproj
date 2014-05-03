@@ -21,6 +21,8 @@
 		5300B907190DE7C300B3001C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5300B8E9190DE7C300B3001C /* UIKit.framework */; };
 		5300B90F190DE7C300B3001C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5300B90D190DE7C300B3001C /* InfoPlist.strings */; };
 		5300B911190DE7C300B3001C /* CircleLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B910190DE7C300B3001C /* CircleLayoutTests.m */; };
+		5300B91C190DEB1700B3001C /* ELYCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B91B190DEB1700B3001C /* ELYCollectionViewCell.m */; };
+		5300B91F190E346000B3001C /* ELYCollectionViewCircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		5300B90C190DE7C300B3001C /* CircleLayoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CircleLayoutTests-Info.plist"; sourceTree = "<group>"; };
 		5300B90E190DE7C300B3001C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5300B910190DE7C300B3001C /* CircleLayoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleLayoutTests.m; sourceTree = "<group>"; };
+		5300B91A190DEB1700B3001C /* ELYCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELYCollectionViewCell.h; sourceTree = "<group>"; };
+		5300B91B190DEB1700B3001C /* ELYCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYCollectionViewCell.m; sourceTree = "<group>"; };
+		5300B91D190E346000B3001C /* ELYCollectionViewCircleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELYCollectionViewCircleLayout.h; sourceTree = "<group>"; };
+		5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYCollectionViewCircleLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,10 @@
 				5300B8F7190DE7C300B3001C /* Main.storyboard */,
 				5300B8FA190DE7C300B3001C /* ELYViewController.h */,
 				5300B8FB190DE7C300B3001C /* ELYViewController.m */,
+				5300B91A190DEB1700B3001C /* ELYCollectionViewCell.h */,
+				5300B91B190DEB1700B3001C /* ELYCollectionViewCell.m */,
+				5300B91D190E346000B3001C /* ELYCollectionViewCircleLayout.h */,
+				5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */,
 				5300B8FD190DE7C300B3001C /* Images.xcassets */,
 				5300B8EC190DE7C300B3001C /* Supporting Files */,
 			);
@@ -253,6 +263,8 @@
 				5300B8FC190DE7C300B3001C /* ELYViewController.m in Sources */,
 				5300B8F2190DE7C300B3001C /* main.m in Sources */,
 				5300B8F6190DE7C300B3001C /* ELYAppDelegate.m in Sources */,
+				5300B91C190DEB1700B3001C /* ELYCollectionViewCell.m in Sources */,
+				5300B91F190E346000B3001C /* ELYCollectionViewCircleLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
