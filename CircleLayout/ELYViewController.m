@@ -9,6 +9,7 @@
 #import "ELYViewController.h"
 #import "ELYCollectionViewCircleLayout.h"
 #import "ELYCollectionViewCell.h"
+#import "ELYColorPickerFlowLayout.h"
 
 @interface ELYViewController ()
 
@@ -35,6 +36,11 @@ NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseId
     
     [[self collectionView] reloadData];
     
+    
+    [[self selectionCollectionView] registerClass:[ELYCollectionViewCell class] forCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier];
+    [[self selectionCollectionView] setCollectionViewLayout:[ELYColorPickerFlowLayout colorPickerFlowLayout]];
+    [[self selectionCollectionView] reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,14 +52,23 @@ NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseId
 #pragma mark - UICollectionView Data Source
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self cellCount];
-
+    if ([collectionView isEqual:self.collectionView]) {
+        return [self cellCount];
+    } else {
+        return 15;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ELYCollectionViewCell *cell = [[self collectionView] dequeueReusableCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier forIndexPath:indexPath];
-    return cell;
-
+    if ([collectionView isEqual:self.collectionView]) {
+        ELYCollectionViewCell *cell = [[self collectionView] dequeueReusableCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+        return cell;
+    } else {
+        ELYCollectionViewCell *cell = [[self selectionCollectionView] dequeueReusableCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+        cell.cellColor = [UIColor greenColor];
+        cell.radius = 60.0;
+        return cell;
+    }
 }
 
 #pragma mark - UICollectionView Delegate

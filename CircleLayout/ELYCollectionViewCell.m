@@ -23,22 +23,27 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    
-//    CGContextRef ctx = UIGraphicsGetCurrentContext();
-//    CGContextAddEllipseInRect(ctx, rect);
-//    CGContextSetFillColor(ctx, CGColorGetComponents([[UIColor blackColor] CGColor]));
-//    CGContextFillPath(ctx);
 
-    CGRect borderRect = CGRectMake(4.0, 4.0, 30.0, 30.0);
+    UIColor *cellColor = self.cellColor ? self.cellColor : [UIColor redColor];
+
+    CGRect borderRect = CGRectMake(4.0, 4.0, self.radius, self.radius);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetRGBStrokeColor(context, 1.0, 1.0, 1.0, 1.0);
-    CGContextSetFillColor(context, CGColorGetComponents([[UIColor redColor] CGColor]));
-    CGContextSetLineWidth(context, 2.0);
+    CGContextSetFillColor(context, CGColorGetComponents([cellColor CGColor]));
     CGContextFillEllipseInRect (context, borderRect);
     CGContextStrokeEllipseInRect(context, borderRect);
     CGContextFillPath(context);
 
 }
 
+- (CGFloat)radius {
+    
+    if (!_radius) {
+        _radius = 40.0;
+    }
+    
+    return _radius;
+    
+}
 
 @end

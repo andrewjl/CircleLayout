@@ -10,4 +10,7 @@
 
 @interface ELYCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, strong) UIColor *cellColor;
+@property (nonatomic, assign) CGFloat radius;
+
 @end

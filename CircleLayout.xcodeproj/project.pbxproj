@@ -23,6 +23,8 @@
 		5300B911190DE7C300B3001C /* CircleLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B910190DE7C300B3001C /* CircleLayoutTests.m */; };
 		5300B91C190DEB1700B3001C /* ELYCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B91B190DEB1700B3001C /* ELYCollectionViewCell.m */; };
 		5300B91F190E346000B3001C /* ELYCollectionViewCircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */; };
+		5300B9221915C1F300B3001C /* ELYColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B9211915C1F300B3001C /* ELYColorPickerViewController.m */; };
+		53D26D6C1919E13A005FAE9A /* ELYColorPickerFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D26D6A1919E13A005FAE9A /* ELYColorPickerFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,10 @@
 		5300B91B190DEB1700B3001C /* ELYCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYCollectionViewCell.m; sourceTree = "<group>"; };
 		5300B91D190E346000B3001C /* ELYCollectionViewCircleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELYCollectionViewCircleLayout.h; sourceTree = "<group>"; };
 		5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYCollectionViewCircleLayout.m; sourceTree = "<group>"; };
+		5300B9201915C1F300B3001C /* ELYColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELYColorPickerViewController.h; sourceTree = "<group>"; };
+		5300B9211915C1F300B3001C /* ELYColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYColorPickerViewController.m; sourceTree = "<group>"; };
+		53D26D691919E13A005FAE9A /* ELYColorPickerFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = ELYColorPickerFlowLayout.h; sourceTree = "<group>"; };
+		53D26D6A1919E13A005FAE9A /* ELYColorPickerFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYColorPickerFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +131,12 @@
 				5300B8FB190DE7C300B3001C /* ELYViewController.m */,
 				5300B91A190DEB1700B3001C /* ELYCollectionViewCell.h */,
 				5300B91B190DEB1700B3001C /* ELYCollectionViewCell.m */,
+				5300B9201915C1F300B3001C /* ELYColorPickerViewController.h */,
+				5300B9211915C1F300B3001C /* ELYColorPickerViewController.m */,
 				5300B91D190E346000B3001C /* ELYCollectionViewCircleLayout.h */,
 				5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */,
+				53D26D691919E13A005FAE9A /* ELYColorPickerFlowLayout.h */,
+				53D26D6A1919E13A005FAE9A /* ELYColorPickerFlowLayout.m */,
 				5300B8FD190DE7C300B3001C /* Images.xcassets */,
 				5300B8EC190DE7C300B3001C /* Supporting Files */,
 			);
@@ -261,10 +271,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5300B8FC190DE7C300B3001C /* ELYViewController.m in Sources */,
+				53D26D6C1919E13A005FAE9A /* ELYColorPickerFlowLayout.m in Sources */,
 				5300B8F2190DE7C300B3001C /* main.m in Sources */,
 				5300B8F6190DE7C300B3001C /* ELYAppDelegate.m in Sources */,
 				5300B91C190DEB1700B3001C /* ELYCollectionViewCell.m in Sources */,
 				5300B91F190E346000B3001C /* ELYCollectionViewCircleLayout.m in Sources */,
+				5300B9221915C1F300B3001C /* ELYColorPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +404,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CircleLayout/CircleLayout-Prefix.pch";
 				INFOPLIST_FILE = "CircleLayout/CircleLayout-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -405,6 +418,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CircleLayout/CircleLayout-Prefix.pch";
 				INFOPLIST_FILE = "CircleLayout/CircleLayout-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -469,6 +483,7 @@
 				5300B916190DE7C300B3001C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5300B917190DE7C300B3001C /* Build configuration list for PBXNativeTarget "CircleLayoutTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +492,7 @@
 				5300B919190DE7C300B3001C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

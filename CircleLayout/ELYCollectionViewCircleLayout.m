@@ -20,6 +20,8 @@
 
 @end
 
+CGFloat ELYCircleLayoutItemSize = 50.0f;
+
 @implementation ELYCollectionViewCircleLayout
 
 + (instancetype)collectionViewCircleLayout {
@@ -54,7 +56,7 @@
 
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
-    [attributes setSize:CGSizeMake(50.0f, 50.0f)];
+    [attributes setSize:CGSizeMake(ELYCircleLayoutItemSize, ELYCircleLayoutItemSize)];
     [attributes setCenter:CGPointMake(
                                       _center.x + _radius * cosf(2 * indexPath.item * M_PI / _cellCount),
                                       _center.y + _radius * sinf(2 * indexPath.item * M_PI / _cellCount)

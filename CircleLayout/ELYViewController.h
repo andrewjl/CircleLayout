@@ -11,5 +11,6 @@
 @interface ELYViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet UICollectionView *selectionCollectionView;
 
 @end
