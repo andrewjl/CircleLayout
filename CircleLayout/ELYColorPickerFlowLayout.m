@@ -9,7 +9,7 @@
 #import "ELYColorPickerFlowLayout.h"
 
 CGFloat ELYPickerFlowLayoutItemSize = 65;
-CGFloat ELYPickerFlowLayoutActiveDistance = 100;
+CGFloat ELYPickerFlowLayoutActiveDistance = 65;
 CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
 
 
@@ -29,7 +29,7 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
 
     self.itemSize = CGSizeMake(ELYPickerFlowLayoutItemSize, ELYPickerFlowLayoutItemSize);
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.sectionInset = UIEdgeInsetsMake(50.0, 0.0, 50.0, 0.0);
+    self.sectionInset = UIEdgeInsetsMake(20.0, 0.0, 20.0, 0.0);
     self.minimumLineSpacing = 10.0;
 
     return self;

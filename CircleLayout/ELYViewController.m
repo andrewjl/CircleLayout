@@ -11,6 +11,8 @@
 #import "ELYCollectionViewCell.h"
 #import "ELYColorPickerFlowLayout.h"
 
+#import "CircleLayout-Swift.h"
+
 @interface ELYViewController ()
 
 @property (nonatomic, assign) NSUInteger cellCount;
@@ -28,6 +30,8 @@ NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseId
 	
     [self setCellCount:20];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     [[self collectionView] addGestureRecognizer:tgr];
     
@@ -39,6 +43,8 @@ NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseId
     
     [[self selectionCollectionView] registerClass:[ELYCollectionViewCell class] forCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier];
     [[self selectionCollectionView] setCollectionViewLayout:[ELYColorPickerFlowLayout colorPickerFlowLayout]];
+    [[self selectionCollectionView] setShowsHorizontalScrollIndicator:NO];
+    [[self selectionCollectionView] setContentInset:UIEdgeInsetsMake(0, 22, 0, 22)];
     [[self selectionCollectionView] reloadData];
     
 }
