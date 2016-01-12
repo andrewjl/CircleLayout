@@ -42,13 +42,22 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     
-    NSArray *layoutAttributes = [super layoutAttributesForElementsInRect:rect];
+    NSArray *originalLayoutAttributes = [super layoutAttributesForElementsInRect:rect];
+    NSMutableArray *modifiedLayoutAttributes = [NSMutableArray arrayWithCapacity:originalLayoutAttributes.count];
+    
+    // Perform a deep copy of the layout attributes to avoid the iOS 9 warning:
+    // UICollectionViewFlowLayout has cached frame mismatch for index path
+    // This is likely occurring because the flow layout subclass ELYColorPickerFlowLayout is modifying attributes returned by UICollectionViewFlowLayout without copying them
+    
+    for (UICollectionViewLayoutAttributes *originalLayoutAttribute in originalLayoutAttributes) {
+        [modifiedLayoutAttributes addObject:[originalLayoutAttribute copy]];
+    }
     
     CGRect visibleRect;
     visibleRect.origin = self.collectionView.contentOffset;
     visibleRect.size = self.collectionView.bounds.size;
     
-    for (UICollectionViewLayoutAttributes *attributes in layoutAttributes) {
+    for (UICollectionViewLayoutAttributes *attributes in modifiedLayoutAttributes) {
         if (CGRectIntersectsRect(attributes.frame, rect)) {
             CGFloat distance = CGRectGetMidX(visibleRect) - attributes.center.x;
             CGFloat normalizedDistance = distance / ELYPickerFlowLayoutActiveDistance;
@@ -61,7 +70,7 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
         }
     }
     
-    return layoutAttributes;
+    return modifiedLayoutAttributes;
     
 }
 
