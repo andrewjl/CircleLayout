@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aQp-ET-ykL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="409"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aQp-ET-ykL">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="409"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wie-yI-Zyx">
                                     <size key="itemSize" width="50" height="50"/>
@@ -31,9 +33,12 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="JvP-vB-kHw"/>
                                 </connections>
                             </collectionView>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ydh-IK-jSj">
-                                <rect key="frame" x="0.0" y="408" width="320" height="160"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ydh-IK-jSj">
+                                <rect key="frame" x="-4" y="408" width="328" height="160"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="luf-oT-cR8"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lcJ-eW-ryL">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -48,6 +53,16 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ydh-IK-jSj" secondAttribute="trailing" constant="-20" id="AW9-TH-s70"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="aQp-ET-ykL" secondAttribute="bottom" constant="159" id="E3p-Es-anC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aQp-ET-ykL" secondAttribute="trailing" constant="-20" id="M1f-gD-pjv"/>
+                            <constraint firstItem="aQp-ET-ykL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="MWz-9w-k2f"/>
+                            <constraint firstItem="aQp-ET-ykL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="N1H-bl-cUR"/>
+                            <constraint firstItem="ydh-IK-jSj" firstAttribute="top" secondItem="aQp-ET-ykL" secondAttribute="bottom" constant="-1" id="Ub3-nn-eSh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ydh-IK-jSj" secondAttribute="leading" constant="20" id="oex-UH-g5q"/>
+                            <constraint firstItem="aQp-ET-ykL" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="w8e-UJ-qXI"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="aQp-ET-ykL" id="vun-xP-Ugc"/>
@@ -59,9 +74,4 @@
             <point key="canvasLocation" x="284" y="90"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
