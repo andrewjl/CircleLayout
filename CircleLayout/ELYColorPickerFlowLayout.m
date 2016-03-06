@@ -20,7 +20,6 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
 }
 
 - (id)init {
-
     self = [super init];
     
     if (!self) {
@@ -33,7 +32,6 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
     self.minimumLineSpacing = 10.0;
 
     return self;
-    
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
@@ -41,7 +39,6 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
-    
     NSArray *originalLayoutAttributes = [super layoutAttributesForElementsInRect:rect];
     NSMutableArray *modifiedLayoutAttributes = [NSMutableArray arrayWithCapacity:originalLayoutAttributes.count];
     
@@ -71,12 +68,10 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
     }
     
     return modifiedLayoutAttributes;
-    
 }
 
 - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset
                                  withScrollingVelocity:(CGPoint)velocity {
-
     CGFloat offsetAdjustment = MAXFLOAT;
     CGFloat horizontalCenter = proposedContentOffset.x + (CGRectGetWidth(self.collectionView.bounds) / 2.0);
     
@@ -91,7 +86,6 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
     }
     
     return CGPointMake(proposedContentOffset.x + offsetAdjustment, proposedContentOffset.y);
-    
 }
 
 @end
