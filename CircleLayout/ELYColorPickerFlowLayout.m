@@ -28,7 +28,8 @@ CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
 
     self.itemSize = CGSizeMake(ELYPickerFlowLayoutItemSize, ELYPickerFlowLayoutItemSize);
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.sectionInset = UIEdgeInsetsMake(20.0, 0.0, 20.0, 0.0);
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    self.sectionInset = UIEdgeInsetsMake(20.0, (screenWidth/3)+30.0f, 20.0, (screenWidth/3)+30.0f);
     self.minimumLineSpacing = 10.0;
 
     return self;
