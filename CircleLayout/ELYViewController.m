@@ -61,7 +61,7 @@ NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseId
     if ([collectionView isEqual:self.collectionView]) {
         return [self cellCount];
     } else {
-        return 15;
+        return 5;
     }
 }
 
