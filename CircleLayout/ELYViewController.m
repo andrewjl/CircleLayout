@@ -67,11 +67,13 @@ NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseId
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([collectionView isEqual:self.collectionView]) {
-        ELYCollectionViewCell *cell = [[self collectionView] dequeueReusableCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+        ELYCollectionViewCell *cell = [[self collectionView] dequeueReusableCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier
+                                                                                       forIndexPath:indexPath];
         cell.cellColor = [self colorPalette][indexPath.row % 5];
         return cell;
     } else {
-        ELYCollectionViewCell *cell = [[self selectionCollectionView] dequeueReusableCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+        ELYCollectionViewCell *cell = [[self selectionCollectionView] dequeueReusableCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier
+                                                                                                forIndexPath:indexPath];
         cell.cellColor = [self colorPalette][indexPath.row % 5];
         cell.radius = 60.0;
         return cell;
