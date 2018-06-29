@@ -16,6 +16,7 @@
 @interface ELYViewController ()
 
 @property (nonatomic, assign) NSUInteger cellCount;
+@property (nonatomic, strong) ELYColorPickerViewModel *viewModel;
 
 @end
 
@@ -29,17 +30,13 @@ NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseId
     [super viewDidLoad];
 	
     [self setCellCount:20];
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     [[self collectionView] addGestureRecognizer:tgr];
-    
     [[self collectionView] registerClass:[ELYCollectionViewCell class] forCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier];
     [[self collectionView] setCollectionViewLayout:[ELYCollectionViewCircleLayout collectionViewCircleLayout]];
-    
     [[self collectionView] reloadData];
-    
     
     [[self selectionCollectionView] registerClass:[ELYCollectionViewCell class] forCellWithReuseIdentifier:kELYCollectionViewCellReuseIdentifier];
     [[self selectionCollectionView] setCollectionViewLayout:[ELYColorPickerFlowLayout colorPickerFlowLayout]];
@@ -47,12 +44,11 @@ NSString *kELYCollectionViewCellReuseIdentifier = @"ELYCollectionViewCellReuseId
     [[self selectionCollectionView] setContentInset:UIEdgeInsetsMake(0, 22, 0, 22)];
     [[self selectionCollectionView] reloadData];
     
+    self.viewModel = [[ELYColorPickerViewModel alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    
 }
 
 #pragma mark - UICollectionView Data Source

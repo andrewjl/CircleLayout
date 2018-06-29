@@ -24,6 +24,8 @@
 		5300B91C190DEB1700B3001C /* ELYCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B91B190DEB1700B3001C /* ELYCollectionViewCell.m */; };
 		5300B91F190E346000B3001C /* ELYCollectionViewCircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */; };
 		5300B9221915C1F300B3001C /* ELYColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300B9211915C1F300B3001C /* ELYColorPickerViewController.m */; };
+		539658631E6CC43800389F5B /* ELYColorPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539658621E6CC43800389F5B /* ELYColorPickerViewModel.swift */; };
+		539658651E6CCAC800389F5B /* ELYColorPickerFlowLayoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539658641E6CCAC800389F5B /* ELYColorPickerFlowLayoutModel.swift */; };
 		53D26D6C1919E13A005FAE9A /* ELYColorPickerFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D26D6A1919E13A005FAE9A /* ELYColorPickerFlowLayout.m */; };
 		53E80E381A8D9CE60079E955 /* ELYColorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E80E371A8D9CE60079E955 /* ELYColorDataSource.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,8 @@
 		5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYCollectionViewCircleLayout.m; sourceTree = "<group>"; };
 		5300B9201915C1F300B3001C /* ELYColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELYColorPickerViewController.h; sourceTree = "<group>"; };
 		5300B9211915C1F300B3001C /* ELYColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYColorPickerViewController.m; sourceTree = "<group>"; };
+		539658621E6CC43800389F5B /* ELYColorPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELYColorPickerViewModel.swift; sourceTree = "<group>"; };
+		539658641E6CCAC800389F5B /* ELYColorPickerFlowLayoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELYColorPickerFlowLayoutModel.swift; sourceTree = "<group>"; };
 		53D26D691919E13A005FAE9A /* ELYColorPickerFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = ELYColorPickerFlowLayout.h; sourceTree = "<group>"; };
 		53D26D6A1919E13A005FAE9A /* ELYColorPickerFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELYColorPickerFlowLayout.m; sourceTree = "<group>"; };
 		53E80E361A8D9CE60079E955 /* CircleLayout-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CircleLayout-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -140,9 +144,11 @@
 				5300B91E190E346000B3001C /* ELYCollectionViewCircleLayout.m */,
 				53D26D691919E13A005FAE9A /* ELYColorPickerFlowLayout.h */,
 				53D26D6A1919E13A005FAE9A /* ELYColorPickerFlowLayout.m */,
+				53E80E371A8D9CE60079E955 /* ELYColorDataSource.swift */,
+				539658621E6CC43800389F5B /* ELYColorPickerViewModel.swift */,
+				539658641E6CCAC800389F5B /* ELYColorPickerFlowLayoutModel.swift */,
 				5300B8FD190DE7C300B3001C /* Images.xcassets */,
 				5300B8EC190DE7C300B3001C /* Supporting Files */,
-				53E80E371A8D9CE60079E955 /* ELYColorDataSource.swift */,
 				53E80E361A8D9CE60079E955 /* CircleLayout-Bridging-Header.h */,
 			);
 			path = CircleLayout;
@@ -284,6 +290,8 @@
 				53D26D6C1919E13A005FAE9A /* ELYColorPickerFlowLayout.m in Sources */,
 				5300B8F2190DE7C300B3001C /* main.m in Sources */,
 				5300B8F6190DE7C300B3001C /* ELYAppDelegate.m in Sources */,
+				539658651E6CCAC800389F5B /* ELYColorPickerFlowLayoutModel.swift in Sources */,
+				539658631E6CC43800389F5B /* ELYColorPickerViewModel.swift in Sources */,
 				5300B91C190DEB1700B3001C /* ELYCollectionViewCell.m in Sources */,
 				5300B91F190E346000B3001C /* ELYCollectionViewCircleLayout.m in Sources */,
 				5300B9221915C1F300B3001C /* ELYColorPickerViewController.m in Sources */,

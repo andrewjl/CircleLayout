@@ -12,6 +12,9 @@ CGFloat ELYPickerFlowLayoutItemSize = 65;
 CGFloat ELYPickerFlowLayoutActiveDistance = 65;
 CGFloat ELYPickerFlowLayoutZoomFactor = 0.3;
 
+@interface ELYColorPickerFlowLayout ()
+
+@end
 
 @implementation ELYColorPickerFlowLayout
 
