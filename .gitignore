@@ -5,6 +5,7 @@ xcuserdata/
 build/
 DerivedData/
 *.moved-aside
+*.xcodeproj/xcuserdata/
 
 # Xcode private settings (window sizes, bookmarks, breakpoints, custom executables, smart groups)
 *.pbxuser
