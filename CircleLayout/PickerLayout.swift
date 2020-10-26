@@ -12,32 +12,31 @@ class PickerLayout: UICollectionViewFlowLayout {
     static let itemSize = CGSize(width: activeDistance,
                                  height: activeDistance)
     static let activeDistance: CGFloat = 125.0
-    static let zoomFactor: CGFloat = 0.5
     
+    var zoomFactor: CGFloat = 0.3
     var width: CGFloat = 0.0
     
     override func prepare() {
         super.prepare()
+        self.scrollDirection = .horizontal
+        let sideInset:CGFloat = (self.width/3) + 75.0
+        let topBottomInset: CGFloat = 20.0
+        self.sectionInset = UIEdgeInsets(top: topBottomInset,
+                                         left: sideInset,
+                                         bottom: topBottomInset,
+                                         right: sideInset)
         
         if let c = self.collectionView {
             self.width = c.bounds.width
             
-            if Self.itemSize.height < c.bounds.height - 60.0 {
+            if Self.itemSize.height < (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor) {
                 self.itemSize = Self.itemSize
             } else {
-                self.itemSize = CGSize(width: (c.bounds.height - 60.0)*0.7, height: (c.bounds.height - 60.0)*0.7)
+                self.itemSize = CGSize(width: (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor),
+                                       height: (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor))
             }
         }
         
-        
-        self.scrollDirection = .horizontal
-        
-        let sideInset:CGFloat = (self.width/3) + 75.0
-        
-        self.sectionInset = UIEdgeInsets(top: 30.0,
-                                         left: sideInset,
-                                         bottom: 30.0,
-                                         right: sideInset)
         self.minimumLineSpacing = 10.0
     }
     
@@ -66,7 +65,7 @@ class PickerLayout: UICollectionViewFlowLayout {
                 let distance = visibleRect.midX - cellAttributes.center.x
                 let normalizedDistance = abs(distance / Self.activeDistance)
                 if abs(distance) < Self.activeDistance {
-                    let zoom: CGFloat = 1 + (Self.zoomFactor * (1 - normalizedDistance))
+                    let zoom: CGFloat = 1 + (self.zoomFactor * (1 - normalizedDistance))
                     cellAttributes.transform3D = CATransform3DMakeScale(zoom, zoom, 1.0)
                     cellAttributes.zIndex = Int(zoom.rounded(.up))
                 }

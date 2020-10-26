@@ -66,6 +66,15 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         circleCollectionView.register(CircleCell.self,
                                       forCellWithReuseIdentifier: CircleCell.reuseIdentifier)
         
+        let circleLayout = self.circleCollectionView.collectionViewLayout as! CircleLayout
+        let traitCollection = self.traitCollection
+        
+        if traitCollection.horizontalSizeClass == .compact {
+            circleLayout.itemRadius = 75.0
+        } else {
+            circleLayout.itemRadius = 150.0
+        }
+        
         let ta = TargetAction { sender in
             if let tgr = sender as? UITapGestureRecognizer {
                 
@@ -93,7 +102,8 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         self.pickerCollectionView.dataSource = self
         self.pickerCollectionView.delegate = self
-        self.pickerCollectionView.register(CircleCell.self, forCellWithReuseIdentifier: CircleCell.reuseIdentifier)
+        self.pickerCollectionView.register(CircleCell.self,
+                                           forCellWithReuseIdentifier: CircleCell.reuseIdentifier)
         self.pickerCollectionView.showsHorizontalScrollIndicator = false
         self.pickerCollectionView.contentInset = UIEdgeInsets(top: 0.0,
                                                               left: 22.0,
@@ -159,12 +169,7 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         } else {
             cell.color = UIColor.colorScheme()[indexPath.row % 5]
         }
-        
-        if collectionView == self.pickerCollectionView {
-            let layout = collectionView.collectionViewLayout as! PickerLayout
-            cell.radius = layout.itemSize.height * 0.85
-        }
-        
+                
         return cell
     }
     
@@ -177,7 +182,6 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         
         if let selectedIndexPath = self.pickerCollectionView.indexPathForItem(at: offsetCenter) {
-            
             self.selectedColor = UIColor.colorScheme()[selectedIndexPath.row]
         }
     }

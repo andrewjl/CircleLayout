@@ -8,12 +8,11 @@
 
 import UIKit
 
-let itemRadius:CGFloat = 50.0
-
 class CircleLayout: UICollectionViewLayout {
     var cellCount: Int
     var center: CGPoint
     var layoutRadius: CGFloat
+    var itemRadius: CGFloat = 50.0
     
     var deleted: [IndexPath] = []
     var inserted: [IndexPath] = []
@@ -21,14 +20,14 @@ class CircleLayout: UICollectionViewLayout {
     override init() {
         self.cellCount = 25
         self.center = .zero
-        self.layoutRadius = itemRadius * 5
+        self.layoutRadius = self.itemRadius * 5
         super.init()
     }
     
     required init?(coder: NSCoder) {
         self.cellCount = 25
         self.center = .zero
-        self.layoutRadius = itemRadius * 5
+        self.layoutRadius = self.itemRadius * 5
         super.init(coder: coder)
     }
     
@@ -64,6 +63,7 @@ class CircleLayout: UICollectionViewLayout {
         let x = self.center.x + layoutRadius * cos(2.0 * CGFloat(indexPath.item) * CGFloat.pi / CGFloat(self.cellCount))
         let y = self.center.y + layoutRadius * sin(2.0 * CGFloat(indexPath.item) * CGFloat.pi / CGFloat(self.cellCount))
         attributes.center = CGPoint(x: x, y: y)
+        attributes.zIndex = indexPath.row
         
         return attributes
     }

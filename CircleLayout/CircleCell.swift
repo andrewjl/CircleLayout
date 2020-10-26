@@ -63,7 +63,7 @@ class CircleCell: UICollectionViewCell {
         self.imageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         self.imageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor).isActive = true
         
-        self.layer.speed = 0.5
+        self.layer.speed = 0.8
     }
     
     func updateImageView() {
