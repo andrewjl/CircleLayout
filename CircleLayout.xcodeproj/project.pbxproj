@@ -23,6 +23,8 @@
 		53D16FE625455186001AC956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D16FE525455186001AC956 /* AppDelegate.swift */; };
 		53D16FEC254551B7001AC956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D16FEB254551B7001AC956 /* SceneDelegate.swift */; };
 		53D16FF225455296001AC956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53D16FF125455296001AC956 /* LaunchScreen.storyboard */; };
+		53D1702825476350001AC956 /* CircleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D1702725476350001AC956 /* CircleCell.swift */; };
+		53D1702E25476387001AC956 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D1702D25476387001AC956 /* Drawing.swift */; };
 		53E80E381A8D9CE60079E955 /* ColorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E80E371A8D9CE60079E955 /* ColorSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		53D16FE525455186001AC956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D16FEB254551B7001AC956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		53D16FF125455296001AC956 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		53D1702725476350001AC956 /* CircleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCell.swift; sourceTree = "<group>"; };
+		53D1702D25476387001AC956 /* Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		53E80E371A8D9CE60079E955 /* ColorSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,10 +121,12 @@
 			children = (
 				53D16FE525455186001AC956 /* AppDelegate.swift */,
 				53D16FEB254551B7001AC956 /* SceneDelegate.swift */,
+				53D1702725476350001AC956 /* CircleCell.swift */,
 				53D16FD525450881001AC956 /* CircleViewController.swift */,
 				53D16FDF25452671001AC956 /* PickerLayout.swift */,
 				53D16FCB2543EBF3001AC956 /* CircleLayout.swift */,
 				53E80E371A8D9CE60079E955 /* ColorSource.swift */,
+				53D1702D25476387001AC956 /* Drawing.swift */,
 				5300B8FD190DE7C300B3001C /* Images.xcassets */,
 				5300B8EC190DE7C300B3001C /* Supporting Files */,
 				53D16FF125455296001AC956 /* LaunchScreen.storyboard */,
@@ -262,7 +268,9 @@
 				53D16FEC254551B7001AC956 /* SceneDelegate.swift in Sources */,
 				53D16FE025452671001AC956 /* PickerLayout.swift in Sources */,
 				53D16FD625450881001AC956 /* CircleViewController.swift in Sources */,
+				53D1702E25476387001AC956 /* Drawing.swift in Sources */,
 				53E80E381A8D9CE60079E955 /* ColorSource.swift in Sources */,
+				53D1702825476350001AC956 /* CircleCell.swift in Sources */,
 				53D16FE625455186001AC956 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

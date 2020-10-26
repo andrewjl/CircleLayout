@@ -8,26 +8,6 @@
 
 import UIKit
 
-public typealias DrawingBlock = (UIGraphicsImageRendererContext) -> Void
-
-func circleRenderer(fillColor: UIColor,
-                    backgroundColor: UIColor = .secondaryLabel,
-                    radius: CGFloat = 25.0,
-                    borderWidth: CGFloat = 4.0) -> DrawingBlock {
-    return { context in
-        let ctxt = context.cgContext
-        let borderRect = CGRect(x: borderWidth,
-                                y: borderWidth,
-                                width: radius,
-                                height: radius)
-        ctxt.setStrokeColor(backgroundColor.cgColor)
-        ctxt.setFillColor(fillColor.cgColor)
-        ctxt.fillEllipse(in: borderRect)
-        ctxt.strokeEllipse(in: borderRect)
-        ctxt.fillPath()
-    }
-}
-
 final class TargetAction {
     let execute: (Any) -> ()
     init(_ execute: @escaping (Any) -> ()) {
@@ -36,58 +16,6 @@ final class TargetAction {
     
     @objc func action(_ sender: Any) {
         self.execute(sender)
-    }
-}
-
-class CircleCell: UICollectionViewCell {
-    static let reuseIdentifier = "CircleCellReuseIdentifier"
-
-    var color: UIColor = .systemRed
-    var radius: CGFloat = itemRadius * 0.8
-    
-    var imageView: UIImageView
-    var renderer: UIGraphicsImageRenderer
-    
-    override init(frame: CGRect) {
-        self.imageView = UIImageView()
-        let format = UIGraphicsImageRendererFormat()
-        self.renderer = UIGraphicsImageRenderer(size: frame.size,
-                                                format: format)
-        super.init(frame: frame)
-        self.setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        self.imageView = UIImageView()
-        let format = UIGraphicsImageRendererFormat()
-        self.renderer = UIGraphicsImageRenderer(size: .zero,
-                                                format: format)
-        super.init(coder: coder)
-        self.setup()
-    }
-    
-    func setup() {
-        self.imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(self.imageView)
-        
-        self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
-        self.imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        self.imageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
-        self.imageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor).isActive = true
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let borderWidth: CGFloat = 4.0
-        let adjustedRadius = self.radius - borderWidth
-        
-        self.imageView.image = self.renderer.image(actions: circleRenderer(fillColor: self.color,
-                                                                           radius: adjustedRadius,
-                                                                           borderWidth: borderWidth))
-        
     }
 }
 
