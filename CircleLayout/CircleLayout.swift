@@ -105,7 +105,7 @@ class CircleLayout: UICollectionViewLayout {
         
         if self.deleted.contains(itemIndexPath) {
             if attributes == nil {
-                attributes = self .initialLayoutAttributesForAppearingItem(at: itemIndexPath)
+                attributes = self.initialLayoutAttributesForAppearingItem(at: itemIndexPath)
             }
             
             attributes?.alpha = 0.0
