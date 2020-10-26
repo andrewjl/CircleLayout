@@ -21,9 +21,15 @@ class PickerLayout: UICollectionViewFlowLayout {
         
         if let c = self.collectionView {
             self.width = c.bounds.width
+            
+            if Self.itemSize.height < c.bounds.height - 60.0 {
+                self.itemSize = Self.itemSize
+            } else {
+                self.itemSize = CGSize(width: (c.bounds.height - 60.0)*0.7, height: (c.bounds.height - 60.0)*0.7)
+            }
         }
         
-        self.itemSize = Self.itemSize
+        
         self.scrollDirection = .horizontal
         
         let sideInset:CGFloat = (self.width/3) + 75.0

@@ -81,9 +81,12 @@ class CircleCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        let borderWidth: CGFloat = 4.0
+        let adjustedRadius = self.radius - borderWidth
         
         self.imageView.image = self.renderer.image(actions: circleRenderer(fillColor: self.color,
-                                                                           radius: self.radius))
+                                                                           radius: adjustedRadius,
+                                                                           borderWidth: borderWidth))
         
     }
 }
@@ -230,7 +233,8 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         
         if collectionView == self.pickerCollectionView {
-            cell.radius = PickerLayout.activeDistance * 0.8
+            let layout = collectionView.collectionViewLayout as! PickerLayout
+            cell.radius = layout.itemSize.height * 0.85
         }
         
         return cell
