@@ -19,15 +19,16 @@ class PickerLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         self.scrollDirection = .horizontal
-        let sideInset:CGFloat = (self.width/3) + 75.0
-        let topBottomInset: CGFloat = 10.0
-        self.sectionInset = UIEdgeInsets(top: topBottomInset,
-                                         left: sideInset,
-                                         bottom: topBottomInset,
-                                         right: sideInset)
         
         if let c = self.collectionView {
             self.width = c.bounds.width
+            
+            let sideInset:CGFloat = (self.width/3) + 75.0
+            let topBottomInset: CGFloat = 10.0
+            self.sectionInset = UIEdgeInsets(top: topBottomInset,
+                                             left: sideInset,
+                                             bottom: topBottomInset,
+                                             right: sideInset)
             
             if Self.itemSize.height < (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor) {
                 self.itemSize = Self.itemSize
