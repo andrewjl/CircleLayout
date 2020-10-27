@@ -123,7 +123,7 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         self.view.backgroundColor = .systemBackground
         self.pickerCollectionView.backgroundColor = .secondarySystemBackground
-        self.circleCollectionView.backgroundColor = .tertiarySystemBackground
+        self.circleCollectionView.backgroundColor = .secondarySystemBackground
         
         self.view.addSubview(self.pickerCollectionView)
         self.pickerCollectionView.translatesAutoresizingMaskIntoConstraints = false
