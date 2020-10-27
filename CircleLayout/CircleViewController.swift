@@ -30,6 +30,12 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var selectedColor: UIColor?
     
+    var circleCompactHeightAnchor: NSLayoutConstraint?
+    var pickerCompactHeightAnchor: NSLayoutConstraint?
+    
+    var circleRegularHeightAnchor: NSLayoutConstraint?
+    var pickerRegularHeightAnchor: NSLayoutConstraint?
+    
     override init(nibName nibNameOrNil: String?,
                   bundle nibBundleOrNil: Bundle?) {
         self.cellCount = 25
@@ -69,8 +75,8 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         let circleLayout = self.circleCollectionView.collectionViewLayout as! CircleLayout
         let traitCollection = self.traitCollection
         
-        if traitCollection.horizontalSizeClass == .compact {
-            circleLayout.itemRadius = 75.0
+        if traitCollection.userInterfaceIdiom == .phone {
+            circleLayout.itemRadius = 70.0
         } else {
             circleLayout.itemRadius = 150.0
         }
@@ -127,22 +133,53 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         self.circleCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.circleCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.circleCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        self.circleCollectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         self.circleCollectionView.bottomAnchor.constraint(equalTo: self.pickerCollectionView.topAnchor).isActive = true
         
         self.pickerCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.pickerCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.pickerCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        self.pickerCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         self.pickerCollectionView.topAnchor.constraint(equalTo: self.circleCollectionView.bottomAnchor).isActive = true
         
-        let pickerHeightMultiplier: CGFloat = 0.15
-        let circleHeightMultiplier = (1.0 - pickerHeightMultiplier)
+        let pickerCompactHeightMultiplier: CGFloat = 0.35
+        let circleCompactHeightMultiplier = (1.0 - pickerCompactHeightMultiplier)
         
-        self.circleCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor,
-                                                          multiplier: circleHeightMultiplier).isActive = true
-        self.pickerCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor,
-                                                          multiplier: pickerHeightMultiplier).isActive = true
+        let circleCompactHeightAnchor = self.circleCollectionView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor,
+                                                                                   multiplier: circleCompactHeightMultiplier)
         
+        
+        let pickerCompactHeightAnchor = self.pickerCollectionView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor,
+                                                                                   multiplier: pickerCompactHeightMultiplier)
+        
+        
+        self.circleCompactHeightAnchor = circleCompactHeightAnchor
+        self.pickerCompactHeightAnchor = pickerCompactHeightAnchor
+        
+    
+        let pickerRegularHeightMultiplier: CGFloat = 0.15
+        let circleRegularHeightMultiplier = (1.0 - pickerRegularHeightMultiplier)
+        
+        let circleRegularHeightAnchor = self.circleCollectionView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor,
+                                                                                   multiplier: circleRegularHeightMultiplier)
+        
+        
+        let pickerRegularHeightAnchor = self.pickerCollectionView.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor,
+                                                                                   multiplier: pickerRegularHeightMultiplier)
+        
+        
+        self.circleCompactHeightAnchor = circleCompactHeightAnchor
+        self.pickerCompactHeightAnchor = pickerCompactHeightAnchor
+    
+        self.circleRegularHeightAnchor = circleRegularHeightAnchor
+        self.pickerRegularHeightAnchor = pickerRegularHeightAnchor
+        
+        if self.traitCollection.verticalSizeClass == .compact {
+            self.circleCompactHeightAnchor?.isActive = true
+            self.pickerCompactHeightAnchor?.isActive = true
+        } else {
+            self.circleRegularHeightAnchor?.isActive = true
+            self.pickerRegularHeightAnchor?.isActive = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -183,6 +220,32 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         if let selectedIndexPath = self.pickerCollectionView.indexPathForItem(at: offsetCenter) {
             self.selectedColor = UIColor.colorScheme()[selectedIndexPath.row]
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        self.pickerCollectionView.collectionViewLayout.invalidateLayout()
+        
+        if let ptc = previousTraitCollection {
+            if ptc.verticalSizeClass != self.traitCollection.verticalSizeClass {
+                if self.traitCollection.verticalSizeClass == .compact {
+                    self.circleRegularHeightAnchor?.isActive = false
+                    self.pickerRegularHeightAnchor?.isActive = false
+                    
+                    self.circleCompactHeightAnchor?.isActive = true
+                    self.pickerCompactHeightAnchor?.isActive = true
+                } else {
+                    self.pickerCompactHeightAnchor?.isActive = false
+                    self.circleCompactHeightAnchor?.isActive = false
+                    
+                    self.pickerRegularHeightAnchor?.isActive = true
+                    self.circleRegularHeightAnchor?.isActive = true
+                }
+                self.view.setNeedsLayout()
+                self.pickerCollectionView.reloadSections([0])
+            }
         }
     }
 }
