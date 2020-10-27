@@ -28,7 +28,7 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var cellCount: Int
     
-    var selectedColor: UIColor?
+    var selectedIndexPath: IndexPath?
     
     var circleCompactHeightAnchor: NSLayoutConstraint?
     var pickerCompactHeightAnchor: NSLayoutConstraint?
@@ -201,25 +201,29 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CircleCell.reuseIdentifier,
                                                       for: indexPath) as! CircleCell
         
-        if let c = self.selectedColor {
-            cell.color = indexPath.row == 0 ? c : UIColor.colorScheme()[indexPath.row % 5]
+        if collectionView == self.circleCollectionView && indexPath.row == 0 {
+            if let s = self.selectedIndexPath {
+                cell.color = UIColor.colorScheme()[s.row]
+            } else {
+                cell.color = UIColor.colorScheme()[0]
+            }
         } else {
             cell.color = UIColor.colorScheme()[indexPath.row % 5]
         }
-                
+        
         return cell
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let center = self.pickerCollectionView.center
         let origin = self.pickerCollectionView.frame.origin
-        let contentOffset = self.pickerCollectionView.contentOffset
-        let offsetCenter = CGPoint(x: center.x - origin.x + contentOffset.x,
-                                   y: center.y - origin.y + contentOffset.y)
         
-        
-        if let selectedIndexPath = self.pickerCollectionView.indexPathForItem(at: offsetCenter) {
-            self.selectedColor = UIColor.colorScheme()[selectedIndexPath.row]
+        let targetOffsetCenter = CGPoint(x: center.x - origin.x + targetContentOffset.pointee.x,
+                                         y: center.y - origin.y + targetContentOffset.pointee.y)
+        if let s = self.pickerCollectionView.indexPathForItem(at: targetOffsetCenter) {
+            self.selectedIndexPath = s
         }
     }
     

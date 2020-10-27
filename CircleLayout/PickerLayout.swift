@@ -9,10 +9,7 @@
 import UIKit
 
 class PickerLayout: UICollectionViewFlowLayout {
-    static let itemSize = CGSize(width: activeDistance,
-                                 height: activeDistance)
-    static let activeDistance: CGFloat = 125.0
-    
+    var activeDistance: CGFloat = 125.0
     var zoomFactor: CGFloat = 0.3
     var width: CGFloat = 0.0
     
@@ -30,11 +27,12 @@ class PickerLayout: UICollectionViewFlowLayout {
                                              bottom: topBottomInset,
                                              right: sideInset)
             
-            if Self.itemSize.height < (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor) {
-                self.itemSize = Self.itemSize
+            if self.activeDistance < (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor) {
+                self.itemSize = CGSize(width: self.activeDistance, height: self.activeDistance)
             } else {
-                self.itemSize = CGSize(width: (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor),
-                                       height: (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor))
+                self.activeDistance = (c.bounds.height - (topBottomInset*2.0))*(1-self.zoomFactor)
+                self.itemSize = CGSize(width: self.activeDistance,
+                                       height: self.activeDistance)
             }
         }
         
@@ -64,8 +62,8 @@ class PickerLayout: UICollectionViewFlowLayout {
         for cellAttributes in modifiedLayoutAttributes {
             if cellAttributes.frame.intersects(rect) {
                 let distance = visibleRect.midX - cellAttributes.center.x
-                let normalizedDistance = abs(distance / Self.activeDistance)
-                if abs(distance) < Self.activeDistance {
+                let normalizedDistance = abs(distance / self.activeDistance)
+                if abs(distance) < self.activeDistance {
                     let zoom: CGFloat = 1 + (self.zoomFactor * (1 - normalizedDistance))
                     cellAttributes.transform3D = CATransform3DMakeScale(zoom, zoom, 1.0)
                     cellAttributes.zIndex = Int(zoom.rounded(.up))
