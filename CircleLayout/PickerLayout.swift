@@ -20,7 +20,7 @@ class PickerLayout: UICollectionViewFlowLayout {
         super.prepare()
         self.scrollDirection = .horizontal
         let sideInset:CGFloat = (self.width/3) + 75.0
-        let topBottomInset: CGFloat = 20.0
+        let topBottomInset: CGFloat = 10.0
         self.sectionInset = UIEdgeInsets(top: topBottomInset,
                                          left: sideInset,
                                          bottom: topBottomInset,
