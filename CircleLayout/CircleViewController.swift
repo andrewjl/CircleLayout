@@ -231,6 +231,7 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.traitCollectionDidChange(previousTraitCollection)
         
         self.pickerCollectionView.collectionViewLayout.invalidateLayout()
+        self.circleCollectionView.collectionViewLayout.invalidateLayout()
         
         if let ptc = previousTraitCollection {
             if ptc.verticalSizeClass != self.traitCollection.verticalSizeClass {
