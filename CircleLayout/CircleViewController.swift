@@ -244,6 +244,12 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 }
                 self.view.setNeedsLayout()
                 self.pickerCollectionView.reloadSections([0])
+                
+                if let s = self.selectedIndexPath {
+                    self.pickerCollectionView.scrollToItem(at: s,
+                                                           at: .centeredHorizontally,
+                                                           animated: true)
+                }
             }
         }
     }
