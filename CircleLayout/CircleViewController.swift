@@ -38,7 +38,7 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override init(nibName nibNameOrNil: String?,
                   bundle nibBundleOrNil: Bundle?) {
-        self.cellCount = 25
+        self.cellCount = 15
         let circleLayout = CircleLayout()
         self.circleCollectionView = UICollectionView(frame: .zero,
                                                      collectionViewLayout: circleLayout)
@@ -54,7 +54,7 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     required init?(coder: NSCoder) {
-        self.cellCount = 25
+        self.cellCount = 15
         let circleLayout = CircleLayout()
         self.circleCollectionView = UICollectionView(frame: .zero,
                                                      collectionViewLayout: circleLayout)
