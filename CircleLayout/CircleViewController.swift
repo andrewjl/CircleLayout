@@ -173,13 +173,6 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.circleCollectionView.reloadData()
-        self.pickerCollectionView.reloadData()
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.circleCollectionView {
             return self.cellCount
