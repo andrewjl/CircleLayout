@@ -20,8 +20,9 @@ class CircleCell: UICollectionViewCell {
     var radius: CGFloat {
         didSet {
             let format = UIGraphicsImageRendererFormat()
-            self.renderer = UIGraphicsImageRenderer(size: CGSize(width: self.radius + (self.borderWidth*2),
-                                                                 height: self.radius + (self.borderWidth*2)),
+            let updatedGraphicsRendererSize = CGSize(width: self.radius,
+                                                     height: self.radius)
+            self.renderer = UIGraphicsImageRenderer(size: updatedGraphicsRendererSize,
                                                     format: format)
             self.updateImageView()
         }
@@ -33,10 +34,10 @@ class CircleCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         self.imageView = UIImageView()
-        self.imageView.contentMode = .center
         let format = UIGraphicsImageRendererFormat()
         self.radius = 40.0
-        self.renderer = UIGraphicsImageRenderer(size: CGSize(width: self.radius, height: self.radius),
+        self.renderer = UIGraphicsImageRenderer(size: CGSize(width: self.radius,
+                                                             height: self.radius),
                                                 format: format)
         super.init(frame: frame)
         self.setup()
@@ -44,10 +45,10 @@ class CircleCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         self.imageView = UIImageView()
-        self.imageView.contentMode = .center
         let format = UIGraphicsImageRendererFormat()
         self.radius = 40.0
-        self.renderer = UIGraphicsImageRenderer(size: CGSize(width: self.radius, height: self.radius),
+        self.renderer = UIGraphicsImageRenderer(size: CGSize(width: self.radius,
+                                                             height: self.radius),
                                                 format: format)
         super.init(coder: coder)
         self.setup()
@@ -68,10 +69,10 @@ class CircleCell: UICollectionViewCell {
     }
     
     func updateImageView() {
-        let adjustedRadius = self.radius - self.borderWidth
-        self.imageView.image = self.renderer.image(actions: circleRenderer(fillColor: self.color,
-                                                                           radius: adjustedRadius,
-                                                                           borderWidth: self.borderWidth))
+        let image = self.renderer.image(actions: circleRenderer(fillColor: self.color,
+                                                                radius: self.radius,
+                                                                borderWidth: self.borderWidth))
+        self.imageView.image = image
     }
     
     override func layoutSubviews() {

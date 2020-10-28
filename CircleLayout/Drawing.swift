@@ -16,10 +16,11 @@ func circleRenderer(fillColor: UIColor,
                     borderWidth: CGFloat = 4.0) -> DrawingBlock {
     return { context in
         let ctxt = context.cgContext
+        
         let borderRect = CGRect(x: borderWidth,
                                 y: borderWidth,
-                                width: radius,
-                                height: radius)
+                                width: radius-(borderWidth*2),
+                                height: radius-(borderWidth*2))
         ctxt.setStrokeColor(backgroundColor.cgColor)
         ctxt.setFillColor(fillColor.cgColor)
         ctxt.fillEllipse(in: borderRect)

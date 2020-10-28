@@ -12,7 +12,7 @@ class CircleLayout: UICollectionViewLayout {
     var cellCount: Int
     var center: CGPoint
     var layoutRadius: CGFloat
-    var itemRadius: CGFloat = 50.0
+    var itemRadius: CGFloat
     
     var deleted: [IndexPath] = []
     var inserted: [IndexPath] = []
@@ -20,14 +20,16 @@ class CircleLayout: UICollectionViewLayout {
     override init() {
         self.cellCount = 25
         self.center = .zero
-        self.layoutRadius = self.itemRadius * 5
+        self.itemRadius = 50.0
+        self.layoutRadius = self.itemRadius * 2
         super.init()
     }
     
     required init?(coder: NSCoder) {
         self.cellCount = 25
         self.center = .zero
-        self.layoutRadius = self.itemRadius * 5
+        self.itemRadius = 50.0
+        self.layoutRadius = self.itemRadius * 2
         super.init(coder: coder)
     }
     
@@ -37,9 +39,18 @@ class CircleLayout: UICollectionViewLayout {
         if let c = self.collectionView {
             self.cellCount = c.numberOfItems(inSection: 0)
             
+            if c.traitCollection.userInterfaceIdiom == .phone {
+                self.itemRadius = 65.0
+            } else {
+                self.itemRadius = 150.0
+            }
+            
             let size = c.bounds.size
-            self.center = CGPoint(x: size.width/2, y: size.height/2)
-            self.layoutRadius = min(size.width, size.height) / 2.5
+            self.center = CGPoint(x: size.width/2,
+                                  y: size.height/2)
+            
+            let minimumSpan: CGFloat = min(size.width, size.height)
+            self.layoutRadius =  minimumSpan / 2.7
         }
     }
     
@@ -58,7 +69,8 @@ class CircleLayout: UICollectionViewLayout {
 
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        attributes.size = CGSize(width: itemRadius, height: itemRadius)
+        attributes.size = CGSize(width: self.itemRadius,
+                                 height: self.itemRadius)
     
         let x = self.center.x + layoutRadius * cos(2.0 * CGFloat(indexPath.item) * CGFloat.pi / CGFloat(self.cellCount))
         let y = self.center.y + layoutRadius * sin(2.0 * CGFloat(indexPath.item) * CGFloat.pi / CGFloat(self.cellCount))

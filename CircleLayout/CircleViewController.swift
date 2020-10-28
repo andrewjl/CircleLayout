@@ -75,12 +75,6 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         let circleLayout = self.circleCollectionView.collectionViewLayout as! CircleLayout
         let traitCollection = self.traitCollection
         
-        if traitCollection.userInterfaceIdiom == .phone {
-            circleLayout.itemRadius = 70.0
-        } else {
-            circleLayout.itemRadius = 150.0
-        }
-        
         let ta = TargetAction { sender in
             if let tgr = sender as? UITapGestureRecognizer {
                 
