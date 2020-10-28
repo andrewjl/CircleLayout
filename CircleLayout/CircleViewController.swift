@@ -72,9 +72,6 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
         circleCollectionView.register(CircleCell.self,
                                       forCellWithReuseIdentifier: CircleCell.reuseIdentifier)
         
-        let circleLayout = self.circleCollectionView.collectionViewLayout as! CircleLayout
-        let traitCollection = self.traitCollection
-        
         let ta = TargetAction { sender in
             if let tgr = sender as? UITapGestureRecognizer {
                 
@@ -243,7 +240,6 @@ class CircleViewController: UIViewController, UICollectionViewDataSource, UIColl
                     self.circleRegularHeightAnchor?.isActive = true
                 }
                 self.view.setNeedsLayout()
-                self.pickerCollectionView.reloadSections([0])
                 
                 if let s = self.selectedIndexPath {
                     self.pickerCollectionView.scrollToItem(at: s,
